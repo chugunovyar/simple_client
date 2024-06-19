@@ -1,2 +1,5 @@
 aiohttp==3.9.5
-aiodns
+aiodns==3.0.0
+sqlalchemy==2.0.30
+psycopg2==2.9.9
+asyncpg==0.29.0

@@ -3,6 +3,7 @@ import asyncio
 from aiohttp import web
 from aiohttp.web_app import Application
 
+from models import User, Address
 from tools.tools import generate_articles
 
 
@@ -13,6 +14,8 @@ class Handler:
     async def handle_greeting(self, request):
         name = request.match_info.get('name', "Anonymous")
         txt = "Hello, {}".format(name)
+        users = User.query.all()
+        print(f"users {users}")
         return web.Response(text=txt)
 
     async def handle_running(self, request):
