@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  app:
+    ports:
+      - "8001:8000"
+    build:
+      context: .
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_HOST=db
+      - POSTGRES_DATABASE=postgres
+      - GO_SERVER=http://172.17.0.1:8000
+    depends_on:
+      - db
+
+volumes:
+  pgdata:
