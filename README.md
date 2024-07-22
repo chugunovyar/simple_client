@@ -19,5 +19,7 @@ curl --location --request GET 'http://localhost:8001/run/' \
 --header 'Cookie: csrftoken=gibvf60D84oizldNvyNg6P3OMUT3l6XO' \
 --data '{"num": 100}'
 ```
-
-3. 
+3. Tests
+```shell
+docker compose run app  bash -c "python3 -m pytest"
+```
