@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, DateTime
 from sqlalchemy.orm import relationship
 
 from .database import Base
@@ -24,3 +24,19 @@ class Item(Base):
     owner_id = Column(Integer, ForeignKey("users.id"))
 
     owner = relationship("User", back_populates="items")
+
+
+class Article(Base):
+    __tablename__ = "articles"
+    id = Column(Integer, primary_key=True)
+    pub_date = Column(DateTime)
+    headline = Column(String)
+    content = Column(String)
+    # external_id = relationship("ExternalId", back_populates="article")
+
+
+class ExternalId(Base):
+    __tablename__ = "external_ids"
+    id = Column(Integer, primary_key=True)
+    external_id = Column(String, unique=True)
+    article_id = Column(Integer, ForeignKey("articles.id"))
