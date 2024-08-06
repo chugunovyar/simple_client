@@ -17,9 +17,8 @@ docker compose up --build
 curl --location --request GET 'http://localhost:8001/run/' \
 --header 'Content-Type: application/json' \
 --header 'Cookie: csrftoken=gibvf60D84oizldNvyNg6P3OMUT3l6XO' \
---data '{"num": 100}'
+--data '{"num": 100000}'
 ```
-
 3. Tests
 ```shell
 docker compose run app  bash -c "python3 -m pytest"
